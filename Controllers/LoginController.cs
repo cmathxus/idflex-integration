@@ -44,7 +44,7 @@ public class LoginController : Controller
                 HttpContext.Session.SetString("SessionToken", token);
 
                 System.Console.WriteLine($"O token é {token}");
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index","Dashboard");
 
             }
 

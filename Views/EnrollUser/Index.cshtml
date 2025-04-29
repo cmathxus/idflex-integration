@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "EnrollUser";
+}
+
+@model IntegracaoIDFlex.Models.EnrollUserViewModel
+
+<h2>Cadastrar novo usuário</h2>
+
+<form method="post" asp-action="EnrollNewUser">
+    <label for="Name">Nome:</label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name"></span>
+
+    <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+</form>
