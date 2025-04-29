@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login no iDFlex</h2>
+
+<form method="post">
+    <label>Usuário:</label><br />
+    <input type="text" name="usuario" value="admin" /><br />
+    <label>Senha:</label><br />
+    <input type="password" name="senha" value="admin" /><br /><br />
+    <button type="submit">Entrar</button>
+</form>
+
+@if (ViewBag.Erro != null)
+{
+    <p style="color:red">@ViewBag.Erro</p>
+}
