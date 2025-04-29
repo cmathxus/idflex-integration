@@ -41,15 +41,18 @@ public class LoginController : Controller
                 var jsonDoc = JsonDocument.Parse(responseBody);
                 var token = jsonDoc.RootElement.GetProperty("session").GetString();
 
-                TempData["Token"] = token;
-                return RedirectToAction("Index", "ControlID");
+                HttpContext.Session.SetString("SessionToken", token);
+
+                System.Console.WriteLine($"O token é {token}");
+                return RedirectToAction("Index", "Dashboard");
+
             }
 
             ViewBag.Erro = "Login inválido.";
         }
-        catch
+        catch (Exception ex)
         {
-            ViewBag.Erro = "Erro de conexão com o equipamento.";
+            ViewBag.Erro = $"Erro de conexão com o equipamento: {ex.Message}";
         }
 
         return View();

@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<p>Token atual: @ViewBag.Session</p>
+
+<form asp-action="AbrirSecBox" method="post">
+    <button type="submit">Abrir SecBox</button>
+</form>
+<form asp-action="FazerLogout" method="post">
+    <button type="submit">Fazer Logout</button>
+</form>
