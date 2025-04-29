@@ -21,12 +21,12 @@ Projeto ASP.NET Core para integração com o equipamento **iDFlex** da **Control
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/cmathxus/integracao-idflex.git
+   git clone https://github.com/cmathxus/idflex-integration.git
    ```
 
 2. Acesse a pasta do projeto:
    ```bash
-   cd integracao-idflex
+   cd idflex-integration
    ```
 
 3. Instale as dependências e rode:
