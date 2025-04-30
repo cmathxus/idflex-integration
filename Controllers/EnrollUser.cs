@@ -38,13 +38,31 @@ public class EnrollUser : Controller
         }
         };
 
+        var actions = new {
+            type = "biometry",
+            user_id = "1",
+            save = "false",
+            sync = "true",
+            panic_finger = "0"
+        };
+
+
         var json = JsonConvert.SerializeObject(comando);
+        var json1 = JsonConvert.SerializeObject(actions);
+
         var request = new HttpRequestMessage(HttpMethod.Post, $"http://192.168.0.129/create_objects.fcgi?session={session}")
         {
             Content = new StringContent(json, Encoding.UTF8, "application/json")
         };
 
+        var request1 = new HttpRequestMessage(HttpMethod.Post, $"http://192.168.0.129/remote_enroll.fcgi?session={session}")
+        {
+            Content = new StringContent(json1, Encoding.UTF8, "application/json")
+        };
+
         await client.SendAsync(request);
         return RedirectToAction("Index", "Dashboard");
+
+        
 }
 }

@@ -2,6 +2,8 @@
     ViewData["Title"] = "Dashboard";
 }
 
+@model IntegracaoIDFlex.Models.FactoryResetViewModel
+
 <h2>Dashboard</h2>
 
 <p>Token atual: @ViewBag.Session</p>
@@ -15,6 +17,24 @@
 <a href="http://192.168.0.129">
     <button>Abrir Painel Web</button>
 </a>
+<br>
+<button id="showFormBtn" class="btn btn-danger">Factory Reset</button>
+<form method="post" asp-action="FactoryReset" id="factoryResetForm" style="display: none;" class="mt-3">
+    <label asp-for="KeepNetworkInfo">Manter configurações de rede?</label>
+    <input type="checkbox" asp-for="KeepNetworkInfo" class="form-check-input" />
+    <br />
+
+    <button type="submit" class="btn btn-warning mt-2">Confirmar Reset</button>
+</form>
 <form asp-action="FazerLogout" method="post">
     <button type="submit">Fazer Logout</button>
 </form>
+
+@section Scripts {
+    <script>
+        document.getElementById("showFormBtn").addEventListener("click", function () {
+            document.getElementById("factoryResetForm").style.display = "block";
+            this.style.display = "none"; 
+        });
+    </script>
+}
