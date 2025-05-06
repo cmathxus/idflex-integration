@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Teste Biometria";
+}
+
+@model IntegracaoIDFlex.Models.EnrollUserViewModel
+
+<h2>Teste Biometria</h2>
+
+<form method="post" asp-action="TesteBiometria" asp-controller="TestBiometria">
+    <label>iD do usuário:</label><br />
+    <input type="number" name="id"/>
+    <button type="submit">Submit</button>
+</form>
+
+@if (TempData["Erro"] != null)
+{
+    <div style="color: red;">@TempData["Erro"]</div>
+}
+@if (TempData["Sucesso"] != null)
+{
+    <div style="color: green;">@TempData["Sucesso"]</div>
+}
