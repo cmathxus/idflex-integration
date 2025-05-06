@@ -18,6 +18,9 @@ public class DashboardController : Controller
             return RedirectToAction("Index", "Login");
         }
 
+        ViewBag.MensagemSucesso = TempData["Sucesso"];
+        ViewBag.MensagemErro = TempData["Erro"];
+
         ViewBag.Session = session;
         return View();
     }

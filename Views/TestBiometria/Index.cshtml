@@ -4,14 +4,34 @@
 
 @model IntegracaoIDFlex.Models.EnrollUserViewModel
 
-<h2>Teste Biometria</h2>
+<h2>Deseja cadastrar a biometria?</h2>
 
-<form method="post" asp-action="TesteBiometria" asp-controller="TestBiometria">
-    <label>iD do usuário:</label><br />
-    <input type="number" name="id"/>
-    <button type="submit">Submit</button>
-</form>
+<div>
+    <button id="btnSim" onclick="mostrarCadastro()">Sim</button>
+    <button id="btnNao" onclick="cancelarCadastro()">Não</button>
+</div>
 
+<div id="formCadastro" style="display: none;">
+    <form method="post" asp-action="TesteBiometria" asp-controller="TestBiometria">
+        <label>iD do usuário:</label><br />
+        <input type="number" id="Id" name="Id" value="@ViewBag.Id"/>
+        <button type="submit">Cadastrar Biometria</button>
+    </form>
+</div>
+
+<script>
+    
+    function mostrarCadastro() {
+        document.getElementById('formCadastro').style.display = 'block'; 
+        document.getElementById('btnSim').disabled = true; 
+        document.getElementById('btnNao').disabled = true; 
+    }
+
+    
+    function cancelarCadastro() {
+        window.location.href = '@Url.Action("Index", "Dashboard")'; 
+    }
+</script>
 @if (TempData["Erro"] != null)
 {
     <div style="color: red;">@TempData["Erro"]</div>

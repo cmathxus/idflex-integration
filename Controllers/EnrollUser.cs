@@ -16,6 +16,8 @@ public class EnrollUser : Controller
     [HttpPost]
     public async Task<IActionResult> EnrollNewUser(EnrollUserViewModel model)
     {
+        
+        TempData["Id"] = model.Id;
         var session = HttpContext.Session.GetString("SessionToken");
 
         if (string.IsNullOrEmpty(session))
@@ -30,6 +32,7 @@ public class EnrollUser : Controller
             @object = "users",
             values = new[] {
             new {
+                id = model.Id,
                 name = model.Name,
                 registration = "",
                 password = "",
@@ -46,7 +49,7 @@ public class EnrollUser : Controller
         };
 
         await client.SendAsync(request);
-        return RedirectToAction("Index", "Dashboard");
+        return RedirectToAction("Index", "TestBiometria");
 
 }
 }

@@ -9,6 +9,8 @@ using IntegracaoIDFlex.Models;
 public class TestBiometria : Controller {
     public IActionResult Index()
     {
+        int Id = (int)TempData["Id"];
+        ViewBag.Id = Id;
         return View();
     }
 
@@ -53,7 +55,7 @@ public class TestBiometria : Controller {
         }
 
         TempData["Sucesso"] = "Cadastro remoto enviado com sucesso!";
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Dashboard");
     }
     catch (Exception ex)
     {

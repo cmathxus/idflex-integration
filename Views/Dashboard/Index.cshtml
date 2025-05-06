@@ -4,7 +4,7 @@
 
 @model IntegracaoIDFlex.Models.FactoryResetViewModel
 
-<h2>Dashboard</h2>
+<h2>Bem-vindo ao Dashboard do IDFlex</h2>
 
 <p>Token atual: @ViewBag.Session</p>
 
@@ -29,9 +29,20 @@
 <form asp-action="FazerLogout" method="post">
     <button type="submit">Fazer Logout</button>
 </form>
-<form asp-controller="TestBiometria" asp-action"Index" method="get">
-    <button type="submit">Teste Biometria</button>
-</form>
+
+@if (ViewBag.MensagemSucesso != null)
+{
+    <div style="color: green;">
+        @ViewBag.MensagemSucesso
+    </div>
+}
+
+@if (ViewBag.MensagemErro != null)
+{
+    <div style="color: red;">
+        @ViewBag.MensagemErro
+    </div>
+}
 
 @section Scripts {
     <script>
