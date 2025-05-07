@@ -30,7 +30,7 @@ public class TestBiometria : Controller {
             
             type = "biometry",
             user_id = id,           
-            save = false,              
+            save = true,              
             sync = true,               
             panic_finger = 0 
 
